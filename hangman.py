@@ -1,0 +1,48 @@
+# ****************************************
+# ************* Hang-Man *****************
+# ****************************************
+
+
+#Generate a random word
+rand_word="hello"
+
+
+# Convert the rand_word to a list and sort it.
+rand_list = (list(rand_word))
+rand_list.sort()
+print(rand_list)
+
+
+# Keep track of attempts made by the user
+attempt=6
+
+
+while (attempt >= 1):
+	# Get user input (Ask to guess a letter)
+	guess = input('Enter Letter: ')
+
+
+	# Check if the guessed letter is in rand_list
+	if guess in rand_list:
+		# If the user guessed correct, remove it from rand_list
+		try: rand_list.remove(guess)
+		except ValueError:print('Unexpected ERROR!')
+
+
+		# Check if this is another attempt or if user win after this move
+		if ((len(rand_list) != 0)):
+			print ('You are CORRECT!')
+		elif((len(rand_list) == 0)):
+			print ('You Win!')
+
+
+	else:print('Wrong. Try again!')
+	
+	
+#	print(rand_list)
+	attempt = attempt - 1
+
+	# check if rand_list have any letters left.
+	if (len(rand_list) == 0):
+		break
+
