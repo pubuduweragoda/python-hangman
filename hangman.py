@@ -16,11 +16,24 @@ print(rand_list)
 # Keep track of attempts made by the user
 attempt=6
 
+# Keep the user from entering invalid values as guesses
+def validate_guess():
+	while True:
+		guess = input('Enter Letter: ')
+
+		# Make sure the user didn't enter more than one letter
+		if (len(guess) > 1):
+			print("Only on letter at a time!")
+			continue
+		elif (len(guess) == 0):
+			continue
+		return guess
+
 
 while (attempt >= 1):
 	# Get user input (Ask to guess a letter)
-	guess = input('Enter Letter: ')
-
+	# guess = input('Enter Letter: ')
+	guess=validate_guess()
 
 	# Check if the guessed letter is in rand_list
 	if guess in rand_list:
@@ -37,12 +50,11 @@ while (attempt >= 1):
 
 
 	else:print('Wrong. Try again!')
-	
-	
+
+
 #	print(rand_list)
 	attempt = attempt - 1
 
 	# check if rand_list have any letters left.
 	if (len(rand_list) == 0):
 		break
-
